@@ -2,37 +2,24 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 text = input("Type your message:\n").lower()
-method = input("Type 'e' to encrypt, type 'd' to decrypt:\n")
+method = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 shift = int(input("Type the shift number:\n"))
 
 
-def encrypt(text, shift):
-    """takes the 'text' and shift each letter of the 'text' forwards in the
-    alphabet by the shift amount
+def encrypt_decrypt(cipher_method = method, text_message = text, shift_amount = shift):
+    """takes the 'text' and shift each letter of the 'text' forwards or
+    backwards in the alphabet by the shift amount
     """
-    encoded_text = ''
-    for letter in text:
+    new_text = ''
+    if cipher_method == 'decode':
+        shift_amount *= -1
+    for letter in text_message:
         letter_index = alphabet.index(letter)
-        new_index = letter_index + shift
+        new_index = letter_index + shift_amount
         try:
             new_letter = alphabet[new_index]
         except IndexError:
             new_letter = alphabet[new_index % len(alphabet)]
-        encoded_text += new_letter
-    return encoded_text
+        new_text += new_letter
+    return new_text
 
-
-def decrypt(text, shift):
-    """takes the 'text' and shift each letter of the 'text' backwards in the
-    alphabet by the shift amount
-    """
-    decoded_text = ''
-    for letter in text:
-        letter_index = alphabet.index(letter)
-        new_index = letter_index - shift
-        try:
-            new_letter = alphabet[new_index]
-        except IndexError:
-            new_letter = alphabet[new_index % len(alphabet)]
-        decoded_text += new_letter
-    return decoded_text
