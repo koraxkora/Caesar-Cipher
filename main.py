@@ -20,3 +20,19 @@ def encrypt(text, shift):
             new_letter = alphabet[new_index % len(alphabet)]
         encoded_text += new_letter
     return encoded_text
+
+
+def decrypt(text, shift):
+    """takes the 'text' and shift each letter of the 'text' backwards in the
+    alphabet by the shift amount
+    """
+    decoded_text = ''
+    for letter in text:
+        letter_index = alphabet.index(letter)
+        new_index = letter_index - shift
+        try:
+            new_letter = alphabet[new_index]
+        except IndexError:
+            new_letter = alphabet[new_index % len(alphabet)]
+        decoded_text += new_letter
+    return decoded_text
