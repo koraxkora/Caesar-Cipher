@@ -1,14 +1,14 @@
 from art import logo
 
-print(logo)
 
+print(logo)
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
 def encrypt_decrypt(cipher_method, text_message, shift_amount):
-    """takes the 'text' and shift each letter of the 'text' forwards or
-    backwards in the alphabet by the shift amount
+    """takes the 'text_message' and shift each letter forwards or
+    backwards in the alphabet by the 'shift_amount'
     """
     new_text = ''
     if cipher_method == 'decode':
